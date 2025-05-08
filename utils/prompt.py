@@ -2,7 +2,7 @@ import json
 import re
 
 def extract_tool_call(text):
-  match = re.search(r"USE TOOL\s*(\{.*?\})", text, re.DOTALL)
+  match = re.search(r"USE_TOOL\s+({.*})", text)
   if match:
     try:
       return json.loads(match.group(1))
