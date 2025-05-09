@@ -53,12 +53,11 @@ Rules:
       'content': user_input
     })
 
-    print(messages)
-
     llm_response = send_to_llm(messages)
 
     tool_call = etc(llm_response)
     if tool_call:
+      messages.pop()
       result = mcpc.call_mcp_tools(tool_call['name'], tool_call['input_schema'])
       print(f"[Tool Result] => {result}")
       messages.append({
@@ -68,7 +67,6 @@ Rules:
 
       final_response = send_to_llm(messages)
       print(f"LLM (final): {final_response}")
-      messages.pop()
     else:
       print(f"LLM: {llm_response}")
 
