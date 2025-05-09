@@ -10,3 +10,4 @@ Use FastAPI for the server and serve with uvicorn.
 - ```pip install -r requirements.txt```
 - `mv .env.example .env` and set your `API_KEY`
 - start the server ```uvicorn server.server:app --reload```
+- start the orchestrator ```python main.py```
